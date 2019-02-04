@@ -15,10 +15,10 @@ describe('User models', () => {
   });
 
   it('validates a good model', () => {
-    return User.create({
-      email: 'test@test.com',
-      password: 'abc123',
-      role: 'chef'
+    const user = new User{
+      
+    }
+    
     })
       .then(user => {
         console.log('user!', user);
