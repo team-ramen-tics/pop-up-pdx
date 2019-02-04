@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv').config();
 require('../../lib/utils/connect')();
 const User = require('../../lib/models/User');
@@ -15,18 +16,19 @@ describe('User models', () => {
   });
 
   it('validates a good model', () => {
-    const user = new User{
-      
-    }
-    
+    return User.create({
+      email: 'test@test.com',
+      // passwordHash: 'abc123',
+      role: 'chef'
     })
       .then(user => {
-        console.log('user!', user);
-        expect(user).toEqual({
+        console.log('user', user);
+        expect(user.toJSON()).toEqual({
           email: 'test@test.com',
-          password: 'abc123',
-          role: expect.any(String),
-          _id: expect.any(Types.ObjectId)
+          // passwordHash: expect.any(Object),
+          role: 'chef',
+          _id: expect.any(Types.ObjectId),
+          // __v: 0
         });
       });
   });
