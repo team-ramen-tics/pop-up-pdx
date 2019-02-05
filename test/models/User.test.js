@@ -22,7 +22,6 @@ describe('User models', () => {
       role: 'chef'
     })
       .then(user => {
-        console.log('user', user);
         expect(user.toJSON()).toEqual({
           email: 'test@test.com',
           // passwordHash: expect.any(Object),

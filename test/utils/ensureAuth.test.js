@@ -1,13 +1,9 @@
 require('dotenv').config();
-// require('../../lib/utils/connect')();
-// const mongoose = require('mongoose');
-// const request = require('supertest');
-// const app = require('../../lib/app');
-// const User = require('../../lib/models/User');
 
-const { bearerToken } = require('../../lib/middleware/ensureAuth');
 
-// const { tokenize } = require('../../lib/utils/token');
+const { bearerToken, ensureAuth } = require('../../lib/middleware/ensureAuth');
+
+const { tokenize } = require('../../lib/utils/token');
 
 describe('ensureAuth', () => {
   it('can get a token', () => {
@@ -19,4 +15,18 @@ describe('ensureAuth', () => {
     expect(req.token).toEqual('abc123');
     expect(next).toHaveBeenCalled();
   });
+  it('can ensureAuth', () => {
+    const token = tokenize({ email: 'vissitor@gmail.com', role: 'visitor' });
+    const req = { token };
+    const next = jest.fn();
+    console.log('ENSURE', req);
+
+    return ensureAuth(['visitor', 'chef'])(req, {}, next)
+      .then(() => {
+        console.log('HERE', req);
+        expect(req.user).toEqual({ email: 'vissitor@gmail.com', role: 'visitor' });
+        expect(next).toHaveBeenCalled();
+      });
+  });
+
 });
