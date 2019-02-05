@@ -68,13 +68,15 @@ describe('User models', () => {
       });
   });
 
-  // it('can compare bad passwords', () => {
-  //   return User.create({
-  //     email: 'test@test.com',
-  //     password: 'p455w0rd'
-  //   })
-  //     .then(user => {
-  //       return user.compare('badPassword');
-  //     })
+  it('can compare bad passwords', () => {
+    return User.create({
+      email: 'chef@gmail.com',
+      password: 'abc123',
+      role: 'chef'
+    })
+      .then(user => {
+        return user.compare('badPassword');
+      });
 
+  });
 });
