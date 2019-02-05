@@ -43,8 +43,15 @@ describe('User models', () => {
   });
 
   it('has a required email', () => {
-    const user = new User({ role: 'chef', password: 'abc123' });
+    const user = new User({});
     const errors = user.validateSync().errors;
     expect(errors.email.message).toEqual('Email required');
   });
+
+  it('has a required role', () => {
+    const user = new User({});
+    const errors = user.validateSync().errors;
+    expect(errors.role.message).toEqual('Role required');
+  });
+
 });

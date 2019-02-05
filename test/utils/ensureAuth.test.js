@@ -5,7 +5,7 @@ const { bearerToken, ensureAuth } = require('../../lib/middleware/ensureAuth');
 
 const { tokenize } = require('../../lib/utils/token');
 
-describe.skip('ensureAuth', () => {
+describe('ensureAuth', () => {
   it('can get a token', () => {
     const req = { 
       get: () => 'bearer abc123'
