@@ -7,7 +7,7 @@
     "test": "jest --verbose --runInBand",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
-    "test:watch": "jest --watch --verbose --runInBand",
+    "test:watch": "jest --watch --verbose --runInBand, --detectOpenHandles",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "seed": "node seed.js"

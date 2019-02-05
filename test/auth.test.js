@@ -43,7 +43,7 @@ describe('Auth', () => {
       });
   });
 
-  it.only('signin a user', () => {
+  it('signin a user', () => {
     return User.create({ email: 'ron@yahoo.com', password: 'password12', role: 'visitor' })
       .then(() => {
         return request(app)
@@ -64,5 +64,34 @@ describe('Auth', () => {
             });      
           });
       });
+  });
+  it('has a verify route', () => {
+    return User.create({
+      email: 'test@test.com',
+      password: 'password',
+      role: 'visitor'
+    })
+      .then(() => {
+        return request(app)
+          .post('/auth/signin')
+          .send({ email: 'test@test.com', password: 'password', role: 'visitor' })
+          .then(res => res.body.token);
+      
+      })
+      .then(token => {
+        return request(app)
+          .get('/auth/verify')
+          .set('Authorization', `Bearer ${token}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ 
+         
+          _id: expect.any(String),
+          email: 'test@test.com',
+          role: 'visitor'
+          
+        });
+      });
+      
   });
 });
