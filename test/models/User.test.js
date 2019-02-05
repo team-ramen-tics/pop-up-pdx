@@ -17,32 +17,67 @@ describe('User models', () => {
 
   it('validates a good model', () => {
     return User.create({
-      email: 'test@test.com',
+      email: 'chef@gmail.com',
+
       password: 'abc123',
       role: 'chef'
     })
       .then(user => {
         expect(user.toJSON()).toEqual({
-          email: 'test@test.com',
-          // passwordHash: expect.any(Object),
+          email: 'chef@gmail.com',
           role: 'chef',
-          _id: expect.any(Types.ObjectId),
-          // __v: 0
+          _id: expect.any(Types.ObjectId)
         });
+      });
+  });
+
+  it('can save password hash', () => {
+    return User.create({
+      email: 'chef@gmail.com',
+      password: 'password123',
+      role: 'chef'
+    })
+      .then(user => {
+        expect(user.passwordHash).toEqual(expect.any(String));
+        expect(user.password).toBeUndefined();
       });
   });
 
   it('has a required email', () => {
     const user = new User({});
     const errors = user.validateSync().errors;
-    expect(errors.email.message).toEqual('Path `email` is required.');
+    expect(errors.email.message).toEqual('Email required');
   });
-  
-  it('stores a _tempPassword', () => {
-    const user = new User({
-      email: 'test@test.com',
-      password: 'password'
-    });
-    expect(user._tempPassword).toEqual('password');
+
+  it('has a required role', () => {
+    const user = new User({});
+    const errors = user.validateSync().errors;
+    expect(errors.role.message).toEqual('Role required');
+  });
+
+  it('can compare good passwords', () => {
+    return User.create({
+      email: 'chef@gmail.com',
+      password: 'abc123',
+      role: 'chef'
+    })
+      .then(user => {
+        return user.compare('abc123');
+      })
+      .then(result => {
+        expect(result).toBeTruthy();
+      });
+  });
+
+  it('can compare bad passwords', () => {
+    return User.create({
+      email: 'chef@gmail.com',
+      password: 'abc123',
+      role: 'chef'
+    })
+      .then(user => {
+        return user.compare('badPassword');
+      });
+
   });
 });
