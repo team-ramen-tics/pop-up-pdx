@@ -31,4 +31,11 @@ describe('User models', () => {
         });
       });
   });
+
+  it('has a required email', () => {
+    const user = new User({});
+    const errors = user.validateSync().errors;
+    expect(errors.email.message).toEqual('Path `email` is required.');
+  });
+
 });

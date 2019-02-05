@@ -19,14 +19,11 @@ describe('ensureAuth', () => {
     const token = tokenize({ email: 'vissitor@gmail.com', role: 'visitor' });
     const req = { token };
     const next = jest.fn();
-    console.log('ENSURE', req);
 
     return ensureAuth(['visitor', 'chef'])(req, {}, next)
       .then(() => {
-        console.log('HERE', req);
         expect(req.user).toEqual({ email: 'vissitor@gmail.com', role: 'visitor' });
         expect(next).toHaveBeenCalled();
       });
   });
-
 });
