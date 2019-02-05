@@ -38,11 +38,15 @@ describe('User models', () => {
     expect(errors.email.message).toEqual('Path `email` is required.');
   });
   
-  it('stores a _tempPassword', () => {
-    const user = new User({
-      email: 'test@test.com',
-      password: 'password'
-    });
-    expect(user._tempPassword).toEqual('password');
+  it('can save password hash', () => {
+    return User.create({
+      email: 'visitor@gmail.com',
+      password: 'password123',
+      role: 'visitor'
+    })
+      .then(user => {
+        expect(user.passwordHash).toEqual(expect.any(String));
+        expect(user.password).toBeUndefined();
+      });
   });
 });
