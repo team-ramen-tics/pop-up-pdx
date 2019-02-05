@@ -45,8 +45,7 @@ describe('Auth', () => {
 
   it.only('signin a user', () => {
     return User.create({ email: 'ron@yahoo.com', password: 'password12', role: 'visitor' })
-      .then(user => {
-        console.log('USER', user);
+      .then(() => {
         return request(app)
           .post('/auth/signin')
           .send({
@@ -55,7 +54,6 @@ describe('Auth', () => {
             role: 'visitor'
           })
           .then(res => {
-            console.log('RES', res.body);
             expect(res.body).toEqual({
               user: {
                 _id: expect.any(String),

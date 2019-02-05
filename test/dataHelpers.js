@@ -15,12 +15,12 @@ beforeEach(done => {
 });
 
 beforeEach(()=> {
-  return seedData({ totalVisitors: 50, totalChefs: 10 });
+  return seedData({ totalVisitors: 20, totalChefs: 10, totalPopUps: 10 });
 });
 
 let token;
 beforeEach(() => {
-  return User.findOne({ email: 'visitor@gmail.com' })
+  return User.findOne({ email: '0visitor@gmail.com' })
     .then(visitor => {
       return request(app)
         .post('/auth/signin')

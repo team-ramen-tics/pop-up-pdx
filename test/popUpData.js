@@ -330,4 +330,4 @@ const popUpData = [
   },
 ];
 
-export default popUpData;
+module.exports = popUpData;
