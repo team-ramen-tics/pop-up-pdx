@@ -18,7 +18,7 @@ describe('User models', () => {
   it('validates a good model', () => {
     return User.create({
       email: 'test@test.com',
-      // passwordHash: 'abc123',
+      password: 'abc123',
       role: 'chef'
     })
       .then(user => {

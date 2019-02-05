@@ -60,8 +60,7 @@ describe('Auth', () => {
               user: {
                 _id: expect.any(String),
                 email: 'ron@yahoo.com',
-                role: 'visitor',
-                __v: 0
+                role: 'visitor'
               },
               token: expect.any(String)
             });      
