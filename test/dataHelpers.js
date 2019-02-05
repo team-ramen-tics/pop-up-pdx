@@ -21,10 +21,10 @@ beforeEach(()=> {
 let token;
 beforeEach(() => {
   return User.findOne({ email: '0visitor@gmail.com' })
-    .then(visitor => {
+    .then(user => {
       return request(app)
         .post('/auth/signin')
-        .send({ email: visitor.email, password: 'abc123', role: 'visitor' });
+        .send({ email: user.email, password: 'password', role: 'visitor' });
     })
     .then(res => {
       token = res.body.token;
