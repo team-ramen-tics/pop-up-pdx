@@ -17,36 +17,34 @@ describe('User models', () => {
 
   it('validates a good model', () => {
     return User.create({
-      email: 'test@test.com',
-      // passwordHash: 'abc123',
+      email: 'chef@gmail.com',
+      password: 'abc123',
       role: 'chef'
     })
       .then(user => {
         expect(user.toJSON()).toEqual({
-          email: 'test@test.com',
-          // passwordHash: expect.any(Object),
+          email: 'chef@gmail.com',
           role: 'chef',
-          _id: expect.any(Types.ObjectId),
-          // __v: 0
+          _id: expect.any(Types.ObjectId)
         });
       });
   });
 
-  it('has a required email', () => {
-    const user = new User({});
-    const errors = user.validateSync().errors;
-    expect(errors.email.message).toEqual('Path `email` is required.');
-  });
-  
   it('can save password hash', () => {
     return User.create({
-      email: 'visitor@gmail.com',
+      email: 'chef@gmail.com',
       password: 'password123',
-      role: 'visitor'
+      role: 'chef'
     })
       .then(user => {
         expect(user.passwordHash).toEqual(expect.any(String));
         expect(user.password).toBeUndefined();
       });
+  });
+
+  it('has a required email', () => {
+    const user = new User({ role: 'chef', password: 'abc123' });
+    const errors = user.validateSync().errors;
+    expect(errors.email.message).toEqual('Email required');
   });
 });
