@@ -31,6 +31,17 @@ beforeEach(() => {
       token = res.body.token;
     });
 });
+beforeEach(() => {
+  return User.findOne({ email: '0chef@gmail.com' })
+    .then(user => {
+      return request(app)
+        .post('/auth/signin')
+        .send({ email: user.email, password: 'password', role: 'chef' });
+    })
+    .then(res => {
+      token = res.body.token;
+    });
+});
 
 afterAll(done => {
   mongoose.connection.close(done);
