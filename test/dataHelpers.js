@@ -15,7 +15,7 @@ beforeEach(done => {
 });
 
 beforeEach(()=> {
-  return seedData({ totalVisitors: 20, totalChefs: 10, totalPopUps: 10 });
+  return seedData({ totalVisitors: 20, totalChefs: 10, totalPopUps: 10, totalAttendees: 10 });
 });
 
 let token;
