@@ -3,6 +3,7 @@ const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const seedData = require('./seedData');
 const User = require('../lib/models/User');
+const PopUp = require('../lib/models/PopUp');
 const request = require('supertest');
 const app = require('../lib/app');
 
@@ -15,7 +16,7 @@ beforeEach(done => {
 });
 
 beforeEach(()=> {
-  return seedData({ totalVisitors: 20, totalChefs: 10, totalPopUps: 10 });
+  return seedData({ totalVisitors: 1, totalChefs: 1, totalPopUps: 1 });
 });
 
 let token;
@@ -46,5 +47,6 @@ const createGetters = Model => {
 
 module.exports = { 
   ...createGetters(User), 
+  ...createGetters(PopUp), 
   getToken: () => token
 };
