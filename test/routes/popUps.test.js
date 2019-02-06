@@ -72,11 +72,39 @@ describe.only('routes for popup', () => {
       .then(deletePopUp => {
         return request(app)
           .delete(`/popups/${deletePopUp._id}`)
+          .set('Authorization', `Bearer ${getToken()}`)
           .send({ deleted: 1 });
       })
       .then(res => {
         expect(res.body).toEqual({ deleted: 1 });
       });
   });
+
+  it('can patch a pop up', () => {
+    return getPopUp()
+      .then(thePopUp => {
+        return request(app)
+          .patch(`/popups/${thePopUp._id}`)
+          .set('Authorization', `Bearer ${getToken()}`)
+          .send({ time: '4 pm' });
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          photoUrl: expect.any(String),
+          date: expect.any(String),
+          name: expect.any(String),
+          chef: expect.any(String),
+          time: '4 pm',
+          food: expect.any(String),
+          address: expect.any(String),
+          zipcode: expect.any(String),
+          _id: expect.any(String),
+          __v: 0
+
+        });
+      });
+  });
+
+ 
 });
 
