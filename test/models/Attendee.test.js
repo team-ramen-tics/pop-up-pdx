@@ -3,6 +3,7 @@ const { Types } = require('mongoose');
 const Attendee = require('../../lib/models/Attendee');
 
 describe('Attendees model', () => {
+
   it('validates a good attendee model', () => {
     const attendee = {
       user: Types.ObjectId(),
