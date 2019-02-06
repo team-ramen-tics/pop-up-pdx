@@ -2,7 +2,6 @@ const app = require('../../lib/app');
 const request = require('supertest');
 const { getToken, getPopUps, getPopUp } = require('../dataHelpers');
 
-
 describe.only('routes for popup', () => {
   it('can create a popup', () => {
     return request(app)
