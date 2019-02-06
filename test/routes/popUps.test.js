@@ -67,5 +67,16 @@ describe.only('routes for popup', () => {
         });
       });
   });
+  it('can delete popUp by id', () => {
+    return getPopUp()
+      .then(deletePopUp => {
+        return request(p)
+          .delete(`/popups/${deletePopUp._id}`)
+          .send({ deleted: 1 });
+      })
+      .then(res => {
+        expect(res.body).toEqual({ deleted: 1 });
+      });
+  });
 });
 
