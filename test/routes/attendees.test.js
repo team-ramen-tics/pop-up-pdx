@@ -35,7 +35,6 @@ describe('attendee model', () => {
   it('deletes an attendee by id', () => {
     return getAttendee()
       .then(attendee => {
-        console.log('ATTEND', attendee);
         return Promise.all([
           Promise.resolve(attendee._id),
           request(app)
