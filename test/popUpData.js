@@ -107,7 +107,7 @@ const popUpData = [
     name: 'HunnyMilk',
     date: '2.17.2019',
     time: '12PM',
-    food: 'Brunch',
+    food: 'American',
     address: '1981 W Burnside St, Portland, OR',
     zipcode: '97209',
     photoUrl: 'http://edensexpeditions.com/wp-content/uploads/2018/10/IMG_3890-900x450.jpg'
