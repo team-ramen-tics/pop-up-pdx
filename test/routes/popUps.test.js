@@ -1,7 +1,6 @@
 const app = require('../../lib/app');
 const request = require('supertest');
-const { getToken, getPopUps } = require('../dataHelpers');
-
+const { getToken, getPopUps, getPopUp } = require('../dataHelpers');
 
 describe.only('routes for popup', () => {
   it('can create a popup', () => {
@@ -42,6 +41,29 @@ describe.only('routes for popup', () => {
       })
       .then(([body, popUps]) => {
         expect(body).toHaveLength(popUps.length);
+      });
+  });
+
+  it('can get popup by id', () => {
+    return getPopUp()
+      .then(foundPopUp => {
+        return request(app)
+          .get(`/popups/${foundPopUp._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          photoUrl: expect.any(String),
+          chef: expect.any(String),
+          name: expect.any(String),
+          date: expect.any(String),
+          time: expect.any(String),
+          food: expect.any(String),
+          address: expect.any(String),
+          zipcode: expect.any(String),
+          _id: expect.any(String),
+          __v: 0
+
+        });
       });
   });
 });
