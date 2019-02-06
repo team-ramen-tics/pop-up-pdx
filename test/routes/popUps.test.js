@@ -1,6 +1,6 @@
 const app = require('../../lib/app');
 const request = require('supertest');
-const { getToken } = require('../dataHelpers');
+const { getToken, getPopUps } = require('../dataHelpers');
 
 
 describe.only('routes for popup', () => {
@@ -31,4 +31,18 @@ describe.only('routes for popup', () => {
       });
 
   });
+  it('can get a list of popups', () => {
+    return request(app)
+      .get('/popups')
+      .then(res => {
+        return Promise.all([
+          Promise.resolve(res.body),
+          getPopUps()
+        ]);
+      })
+      .then(([body, popUps]) => {
+        expect(body).toHaveLength(popUps.length);
+      });
+  });
 });
+
