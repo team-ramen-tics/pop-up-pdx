@@ -19,7 +19,7 @@ describe.only('routes for popup', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          user: expect.any(String),
+          chef: expect.any(String),
           __v: 0,
           name: 'Jun Jun',
           date: '2.28.2019',
