@@ -37,8 +37,8 @@ module.exports = async({
   }));
 
   await Attendee.create([...Array(totalAttendees)].map(() => {
-    const visitor = chance.pickone(visitors)._id;
+    const user = chance.pickone(visitors)._id;
     const popUp = chance.pickone(popUps)._id;
-    return { partySize: chance.integer({ min: 2, max: 10 }), popUp, visitor };
+    return { partySize: chance.integer({ min: 2, max: 10 }), popUp, user };
   }));
 };
