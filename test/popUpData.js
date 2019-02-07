@@ -313,7 +313,7 @@ const popUpData = [
   {
     name: 'Tapalaya',
     date: '3.10.2019',
-    time: '',
+    time: '1PM',
     food: 'Latin',
     address: '28 NE 28th Ave, Portland, OR',
     zipcode: '97232',
