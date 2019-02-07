@@ -4,6 +4,7 @@
   "description": "Pop-Up PDX is an app that gives new food businesses the platform to advertise their pop up event to the public.  It is a social media site that supports short-term, temporary food event that is \"here today, gone tomorrow\".  It connects small food businesses with current spaces that they can utilize to test their market and create a long term, lasting impression with potential customers.  This platform also allows the businesses to communicate their brand’s promise to potential customers through the use of a unique and engaging physical environment while creating an  immersive dining experience.",
   "main": "index.js",
   "scripts": {
+    "client": "node client/client.js",
     "test": "jest --verbose --runInBand",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
@@ -31,9 +32,11 @@
     "chance": "^1.0.18",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "inquirer": "^6.2.2",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.9",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "terminal-image": "^0.1.2"
   },
   "devDependencies": {
     "eslint": "^5.13.0",
