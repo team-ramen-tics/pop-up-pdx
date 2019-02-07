@@ -1,7 +1,6 @@
 const signin = require('./lib/signin');
-// const selection = require('./lib/select');
+const selection = require('./lib/select');
 
-// console.log(selection);
+console.log(selection);
 
-signin();
-// .then(selection);
+signin().then(selection);
