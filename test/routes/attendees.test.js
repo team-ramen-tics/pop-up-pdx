@@ -32,6 +32,17 @@ describe('attendee model', () => {
           });
       });
   });
+
+  it('can get a lit of attendees', () => {
+    return request(app)
+      .get('/attendees')
+      .set('Authorization', `Bearer ${getToken()}`)
+      .then(res => {
+        console.log('RES', res.body);
+        expect(res.body).toHaveLength(10);
+      });
+  });
+
   it('deletes an attendee by id', () => {
     return getAttendee()
       .then(attendee => {
