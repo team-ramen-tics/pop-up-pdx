@@ -36,6 +36,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.9",
     "nodemon": "^1.18.9",
+    "superagent": "^4.1.0",
     "terminal-image": "^0.1.2"
   },
   "devDependencies": {
