@@ -10,6 +10,7 @@ const DEFAULT_TOTAL_CHEFS = 10;
 const DEFAULT_TOTAL_POPUPS = 10;
 const DEFAULT_TOTAL_ATTENDEES = 40;
 
+
 module.exports = async({
   totalVisitors = DEFAULT_TOTAL_VISITORS,
   totalChefs = DEFAULT_TOTAL_CHEFS,

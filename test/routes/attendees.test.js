@@ -33,6 +33,7 @@ describe('attendee model', () => {
       });
   });
 
+
   it('can get a list of attendees', () => {
     return request(app)
       .get('/attendees')
@@ -68,6 +69,7 @@ describe('attendee model', () => {
       })
       .then(res => {
         expect(res.body).toEqual({ deleted: 1 });
+
       });
   });
 });
