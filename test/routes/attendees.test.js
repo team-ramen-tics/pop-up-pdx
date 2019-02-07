@@ -32,6 +32,33 @@ describe('attendee model', () => {
           });
       });
   });
+
+  it('can get a list of attendees', () => {
+    return request(app)
+      .get('/attendees')
+      .set('Authorization', `Bearer ${getToken()}`)
+      .then(res => {
+        expect(res.body).toHaveLength(10);
+      });
+  });
+
+  it('can get by id', () => {
+    return getAttendee()
+      .then(attendee => {
+        return request(app)
+          .get(`/attendees/${attendee._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          user: expect.any(Object),
+          popUp: expect.any(String),
+          partySize: expect.any(Number),
+          _id: expect.any(String),
+          __v: 0
+        });
+      });
+  });
+
   it('deletes an attendee by id', () => {
     return getAttendee()
       .then(attendee => {
