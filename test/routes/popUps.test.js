@@ -53,7 +53,7 @@ describe.only('routes for popup', () => {
       .then(res => {
         expect(res.body).toEqual({
           photoUrl: expect.any(String),
-          chef: expect.any(String),
+          chef: expect.any(Object),
           name: expect.any(String),
           date: expect.any(String),
           time: expect.any(String),
@@ -62,7 +62,6 @@ describe.only('routes for popup', () => {
           zipcode: expect.any(String),
           _id: expect.any(String),
           __v: 0
-
         });
       });
   });
@@ -93,7 +92,7 @@ describe.only('routes for popup', () => {
           photoUrl: expect.any(String),
           date: expect.any(String),
           name: expect.any(String),
-          chef: expect.any(String),
+          chef: expect.any(Object),
           time: '4 pm',
           food: expect.any(String),
           address: expect.any(String),
