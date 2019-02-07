@@ -2,6 +2,7 @@ const config = require('../config');
 const { setToken } = require('./token');
 const inquirer = require('inquirer');
 const request = require('superagent');
+// const API_URL = 'http://localhost:7890/api';
 
 console.log('select', require('./select'));
 
