@@ -77,6 +77,5 @@ describe('User models', () => {
       .then(user => {
         return user.compare('badPassword');
       });
-
   });
 });
