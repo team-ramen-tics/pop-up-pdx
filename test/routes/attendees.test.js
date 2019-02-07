@@ -62,26 +62,12 @@ describe('attendee model', () => {
   it('deletes an attendee by id', () => {
     return getAttendee()
       .then(attendee => {
-        return Promise.all([
-          Promise.resolve(attendee._id),
-          request(app)
-            .delete(`/attendees/${attendee._id}`)
-            .set('Authorization', `Bearer ${getToken()}`)
-        ]);
-      })
-      .then(([_id, res]) => {
-        expect(res.body).toEqual({
-          __v: 0,
-          _id,
-          user: expect.any(String),
-          popUp: expect.any(String),
-          partySize: expect.any(Number)
-        });
         return request(app)
-          .get(`/attendees/${_id}`);
+          .delete(`/attendees/${attendee._id}`)
+          .set('Authorization', `Bearer ${getToken()}`);
       })
       .then(res => {
-        expect(res.status).toEqual(404);
+        expect(res.body).toEqual({ deleted: 1 });
       });
   });
 });
