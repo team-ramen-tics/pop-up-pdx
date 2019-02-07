@@ -10,8 +10,7 @@
     "test:watch": "jest --watch --verbose --runInBand, --detectOpenHandles",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "seed": "node seed.js",
-    "copy": "rm -rf ../server/public && cp -R ./dist ../server/public"
+    "seed": "node seed.js"
   },
   "jest": {
     "testEnvironment": "node"
