@@ -5,10 +5,10 @@ const Chance = require('chance');
 const chance = new Chance();
 const Attendee = require('../lib/models/Attendee');
 
-const DEFAULT_TOTAL_VISITORS = 50;
+const DEFAULT_TOTAL_VISITORS = 60;
 const DEFAULT_TOTAL_CHEFS = 10;
-const DEFAULT_TOTAL_POPUPS = 20;
-const DEFAULT_TOTAL_ATTENDEES = 10;
+const DEFAULT_TOTAL_POPUPS = 10;
+const DEFAULT_TOTAL_ATTENDEES = 50;
 
 module.exports = async({
   totalVisitors = DEFAULT_TOTAL_VISITORS,
@@ -37,7 +37,7 @@ module.exports = async({
   }));
 
   await Attendee.create([...Array(totalAttendees)].map(() => {
-    const user = chance.pickone(visitors)._id;
+    const user = chance.pick(visitors)._id;
     const popUp = chance.pickone(popUps)._id;
     return { partySize: chance.integer({ min: 2, max: 10 }), popUp, user };
   }));
