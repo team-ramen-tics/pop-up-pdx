@@ -9,7 +9,3 @@ app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`server running on port ${PORT}...`);
 });
-
-// app.listen(7890, () => {
-//   console.log('Running on 7890');
-// });
