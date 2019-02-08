@@ -19,7 +19,7 @@ module.exports = () => {
       message: 'Password'
     },
     {
-      type: 'checkbox',
+      type: 'list',
       name: 'role',
       message: 'Select your role',
       choices: ['visitor', 'chef']
