@@ -5,7 +5,6 @@ const seedData = require('./seedData');
 const User = require('../lib/models/User');
 const PopUp = require('../lib/models/PopUp');
 const Attendee = require('../lib/models/Attendee');
-
 const request = require('supertest');
 const app = require('../lib/app');
 
@@ -34,6 +33,7 @@ beforeEach(() => {
       token = res.body.token;
     });
 });
+
 beforeEach(() => {
   return User.findOne({ email: '0chef@gmail.com' })
     .then(user => {

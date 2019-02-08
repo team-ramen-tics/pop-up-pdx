@@ -28,8 +28,8 @@ describe.only('routes for popup', () => {
           zipcode: '97205'
         });
       });
-
   });
+
   it('can get a list of popups', () => {
     return request(app)
       .get('/popups')
@@ -99,11 +99,7 @@ describe.only('routes for popup', () => {
           zipcode: expect.any(String),
           _id: expect.any(String),
           __v: 0
-
         });
       });
   });
-
- 
 });
-

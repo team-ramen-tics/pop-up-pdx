@@ -1,15 +1,11 @@
 require('dotenv').config();
 require('../lib/utils/connect')();
-// const connect = require('../lib/utils/connect');
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../lib/app');
 const User = require('../lib/models/User');
 
 describe('Auth', () => {
-  // beforeAll(() => {
-  //   connect();
-  // });
 
   beforeEach(done => {
     return mongoose.connection.dropDatabase(() => {
@@ -65,6 +61,7 @@ describe('Auth', () => {
           });
       });
   });
+
   it('has a verify route', () => {
     return User.create({
       email: 'test@test.com',
@@ -92,6 +89,5 @@ describe('Auth', () => {
           
         });
       });
-      
   });
 });

@@ -1,8 +1,3 @@
-// const PopUp = require('../lib/models/PopUp');
-// const User = require('../lib/models/User');
-// const Chance = require('chance');
-// const chance = new Chance();
-
 const popUpData = [
   {
     name: 'Casa Zoraya',
