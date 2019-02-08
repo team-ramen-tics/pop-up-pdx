@@ -72,8 +72,7 @@ describe('Auth', () => {
         return request(app)
           .post('/auth/signin')
           .send({ email: 'test@test.com', password: 'password', role: 'visitor' })
-          .then(res => res.body.token);
-      
+          .then(res => res.body.token);      
       })
       .then(token => {
         return request(app)
@@ -81,12 +80,10 @@ describe('Auth', () => {
           .set('Authorization', `Bearer ${token}`);
       })
       .then(res => {
-        expect(res.body).toEqual({ 
-         
+        expect(res.body).toEqual({          
           _id: expect.any(String),
           email: 'test@test.com',
           role: 'visitor'
-          
         });
       });
   });
