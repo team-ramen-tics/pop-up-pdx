@@ -99,7 +99,6 @@ describe.only('routes for popup', () => {
           zipcode: expect.any(String),
           _id: expect.any(String),
           __v: 0
-
         });
       });
   });

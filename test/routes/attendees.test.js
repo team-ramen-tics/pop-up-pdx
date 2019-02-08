@@ -3,6 +3,7 @@ const app = require('../../lib/app');
 const { getToken, getPopUp, getUser, getAttendee } = require('../dataHelpers');
 
 describe('attendee model', () => {
+
   it('creates an attendee', () => {
     return getPopUp()
       .then(popUp => {
@@ -28,7 +29,6 @@ describe('attendee model', () => {
           });
       });
   });
-
 
   it('can get a list of attendees', () => {
     return request(app)

@@ -7,9 +7,8 @@ const Attendee = require('../lib/models/Attendee');
 
 const DEFAULT_TOTAL_VISITORS = 50;
 const DEFAULT_TOTAL_CHEFS = 10;
-const DEFAULT_TOTAL_POPUPS = 10;
+const DEFAULT_TOTAL_POPUPS = 35;
 const DEFAULT_TOTAL_ATTENDEES = 40;
-
 
 module.exports = async({
   totalVisitors = DEFAULT_TOTAL_VISITORS,
